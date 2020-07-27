@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package prime;
+
+option java_package = "com.studentReader.generated.stubs";
+option java_multiple_files = true;
+
+message Empty {}
+
+message StudentObjectResponse {
+  repeated Student students=1;
+}
+
+message Student{
+  string Fname = 1;
+  string lname=2;
+  int32 roll=3;
+  string branch=4;
+  int32 zipcode=5;
+
+}
+service StudentService{
+  rpc getStudentList(Empty) returns (StudentObjectResponse) {};
+}
