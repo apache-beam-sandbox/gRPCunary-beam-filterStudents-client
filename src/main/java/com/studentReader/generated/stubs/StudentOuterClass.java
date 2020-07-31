@@ -29,6 +29,16 @@ public final class StudentOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_prime_Student_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_prime_Address_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_prime_Address_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_prime_Street_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_prime_Street_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -40,12 +50,16 @@ public final class StudentOuterClass {
     java.lang.String[] descriptorData = {
       "\n\rstudent.proto\022\005prime\"\007\n\005Empty\"9\n\025Stude" +
       "ntObjectResponse\022 \n\010students\030\001 \003(\0132\016.pri" +
-      "me.Student\"V\n\007Student\022\r\n\005Fname\030\001 \001(\t\022\r\n\005" +
+      "me.Student\"f\n\007Student\022\r\n\005Fname\030\001 \001(\t\022\r\n\005" +
       "lname\030\002 \001(\t\022\014\n\004roll\030\003 \001(\005\022\016\n\006branch\030\004 \001(" +
-      "\t\022\017\n\007zipcode\030\005 \001(\0052P\n\016StudentService\022>\n\016" +
-      "getStudentList\022\014.prime.Empty\032\034.prime.Stu" +
-      "dentObjectResponse\"\000B%\n!com.studentReade" +
-      "r.generated.stubsP\001b\006proto3"
+      "\t\022\037\n\007address\030\005 \001(\0132\016.prime.Address\"L\n\007Ad" +
+      "dress\022\023\n\013houseNumber\030\001 \001(\t\022\r\n\005phone\030\002 \001(" +
+      "\003\022\035\n\006street\030\003 \001(\0132\r.prime.Street\"-\n\006Stre" +
+      "et\022\022\n\nstreetName\030\001 \001(\t\022\017\n\007zipCode\030\002 \001(\0032" +
+      "P\n\016StudentService\022>\n\016getStudentList\022\014.pr" +
+      "ime.Empty\032\034.prime.StudentObjectResponse\"" +
+      "\000B%\n!com.studentReader.generated.stubsP\001" +
+      "b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -76,7 +90,19 @@ public final class StudentOuterClass {
     internal_static_prime_Student_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_prime_Student_descriptor,
-        new java.lang.String[] { "Fname", "Lname", "Roll", "Branch", "Zipcode", });
+        new java.lang.String[] { "Fname", "Lname", "Roll", "Branch", "Address", });
+    internal_static_prime_Address_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_prime_Address_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_prime_Address_descriptor,
+        new java.lang.String[] { "HouseNumber", "Phone", "Street", });
+    internal_static_prime_Street_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_prime_Street_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_prime_Street_descriptor,
+        new java.lang.String[] { "StreetName", "ZipCode", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

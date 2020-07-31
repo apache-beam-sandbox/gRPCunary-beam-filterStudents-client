@@ -20,7 +20,6 @@ private static final long serialVersionUID = 0L;
     lname_ = "";
     roll_ = 0;
     branch_ = "";
-    zipcode_ = 0;
   }
 
   @java.lang.Override
@@ -70,9 +69,17 @@ private static final long serialVersionUID = 0L;
             branch_ = s;
             break;
           }
-          case 40: {
+          case 42: {
+            com.studentReader.generated.stubs.Address.Builder subBuilder = null;
+            if (address_ != null) {
+              subBuilder = address_.toBuilder();
+            }
+            address_ = input.readMessage(com.studentReader.generated.stubs.Address.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(address_);
+              address_ = subBuilder.buildPartial();
+            }
 
-            zipcode_ = input.readInt32();
             break;
           }
           default: {
@@ -218,13 +225,25 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int ZIPCODE_FIELD_NUMBER = 5;
-  private int zipcode_;
+  public static final int ADDRESS_FIELD_NUMBER = 5;
+  private com.studentReader.generated.stubs.Address address_;
   /**
-   * <code>int32 zipcode = 5;</code>
+   * <code>.prime.Address address = 5;</code>
    */
-  public int getZipcode() {
-    return zipcode_;
+  public boolean hasAddress() {
+    return address_ != null;
+  }
+  /**
+   * <code>.prime.Address address = 5;</code>
+   */
+  public com.studentReader.generated.stubs.Address getAddress() {
+    return address_ == null ? com.studentReader.generated.stubs.Address.getDefaultInstance() : address_;
+  }
+  /**
+   * <code>.prime.Address address = 5;</code>
+   */
+  public com.studentReader.generated.stubs.AddressOrBuilder getAddressOrBuilder() {
+    return getAddress();
   }
 
   private byte memoizedIsInitialized = -1;
@@ -253,8 +272,8 @@ private static final long serialVersionUID = 0L;
     if (!getBranchBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, branch_);
     }
-    if (zipcode_ != 0) {
-      output.writeInt32(5, zipcode_);
+    if (address_ != null) {
+      output.writeMessage(5, getAddress());
     }
     unknownFields.writeTo(output);
   }
@@ -278,9 +297,9 @@ private static final long serialVersionUID = 0L;
     if (!getBranchBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, branch_);
     }
-    if (zipcode_ != 0) {
+    if (address_ != null) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(5, zipcode_);
+        .computeMessageSize(5, getAddress());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -306,8 +325,11 @@ private static final long serialVersionUID = 0L;
         == other.getRoll());
     result = result && getBranch()
         .equals(other.getBranch());
-    result = result && (getZipcode()
-        == other.getZipcode());
+    result = result && (hasAddress() == other.hasAddress());
+    if (hasAddress()) {
+      result = result && getAddress()
+          .equals(other.getAddress());
+    }
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -327,8 +349,10 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getRoll();
     hash = (37 * hash) + BRANCH_FIELD_NUMBER;
     hash = (53 * hash) + getBranch().hashCode();
-    hash = (37 * hash) + ZIPCODE_FIELD_NUMBER;
-    hash = (53 * hash) + getZipcode();
+    if (hasAddress()) {
+      hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
+      hash = (53 * hash) + getAddress().hashCode();
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -470,8 +494,12 @@ private static final long serialVersionUID = 0L;
 
       branch_ = "";
 
-      zipcode_ = 0;
-
+      if (addressBuilder_ == null) {
+        address_ = null;
+      } else {
+        address_ = null;
+        addressBuilder_ = null;
+      }
       return this;
     }
 
@@ -502,7 +530,11 @@ private static final long serialVersionUID = 0L;
       result.lname_ = lname_;
       result.roll_ = roll_;
       result.branch_ = branch_;
-      result.zipcode_ = zipcode_;
+      if (addressBuilder_ == null) {
+        result.address_ = address_;
+      } else {
+        result.address_ = addressBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -566,8 +598,8 @@ private static final long serialVersionUID = 0L;
         branch_ = other.branch_;
         onChanged();
       }
-      if (other.getZipcode() != 0) {
-        setZipcode(other.getZipcode());
+      if (other.hasAddress()) {
+        mergeAddress(other.getAddress());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -831,30 +863,121 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int zipcode_ ;
+    private com.studentReader.generated.stubs.Address address_ = null;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.studentReader.generated.stubs.Address, com.studentReader.generated.stubs.Address.Builder, com.studentReader.generated.stubs.AddressOrBuilder> addressBuilder_;
     /**
-     * <code>int32 zipcode = 5;</code>
+     * <code>.prime.Address address = 5;</code>
      */
-    public int getZipcode() {
-      return zipcode_;
+    public boolean hasAddress() {
+      return addressBuilder_ != null || address_ != null;
     }
     /**
-     * <code>int32 zipcode = 5;</code>
+     * <code>.prime.Address address = 5;</code>
      */
-    public Builder setZipcode(int value) {
-      
-      zipcode_ = value;
-      onChanged();
+    public com.studentReader.generated.stubs.Address getAddress() {
+      if (addressBuilder_ == null) {
+        return address_ == null ? com.studentReader.generated.stubs.Address.getDefaultInstance() : address_;
+      } else {
+        return addressBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.prime.Address address = 5;</code>
+     */
+    public Builder setAddress(com.studentReader.generated.stubs.Address value) {
+      if (addressBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        address_ = value;
+        onChanged();
+      } else {
+        addressBuilder_.setMessage(value);
+      }
+
       return this;
     }
     /**
-     * <code>int32 zipcode = 5;</code>
+     * <code>.prime.Address address = 5;</code>
      */
-    public Builder clearZipcode() {
-      
-      zipcode_ = 0;
-      onChanged();
+    public Builder setAddress(
+        com.studentReader.generated.stubs.Address.Builder builderForValue) {
+      if (addressBuilder_ == null) {
+        address_ = builderForValue.build();
+        onChanged();
+      } else {
+        addressBuilder_.setMessage(builderForValue.build());
+      }
+
       return this;
+    }
+    /**
+     * <code>.prime.Address address = 5;</code>
+     */
+    public Builder mergeAddress(com.studentReader.generated.stubs.Address value) {
+      if (addressBuilder_ == null) {
+        if (address_ != null) {
+          address_ =
+            com.studentReader.generated.stubs.Address.newBuilder(address_).mergeFrom(value).buildPartial();
+        } else {
+          address_ = value;
+        }
+        onChanged();
+      } else {
+        addressBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.prime.Address address = 5;</code>
+     */
+    public Builder clearAddress() {
+      if (addressBuilder_ == null) {
+        address_ = null;
+        onChanged();
+      } else {
+        address_ = null;
+        addressBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.prime.Address address = 5;</code>
+     */
+    public com.studentReader.generated.stubs.Address.Builder getAddressBuilder() {
+      
+      onChanged();
+      return getAddressFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.prime.Address address = 5;</code>
+     */
+    public com.studentReader.generated.stubs.AddressOrBuilder getAddressOrBuilder() {
+      if (addressBuilder_ != null) {
+        return addressBuilder_.getMessageOrBuilder();
+      } else {
+        return address_ == null ?
+            com.studentReader.generated.stubs.Address.getDefaultInstance() : address_;
+      }
+    }
+    /**
+     * <code>.prime.Address address = 5;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.studentReader.generated.stubs.Address, com.studentReader.generated.stubs.Address.Builder, com.studentReader.generated.stubs.AddressOrBuilder> 
+        getAddressFieldBuilder() {
+      if (addressBuilder_ == null) {
+        addressBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            com.studentReader.generated.stubs.Address, com.studentReader.generated.stubs.Address.Builder, com.studentReader.generated.stubs.AddressOrBuilder>(
+                getAddress(),
+                getParentForChildren(),
+                isClean());
+        address_ = null;
+      }
+      return addressBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

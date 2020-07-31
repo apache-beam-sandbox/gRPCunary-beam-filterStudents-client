@@ -30,6 +30,7 @@ public class PipelineMain {
       // response.getStudentsList().forEach(student -> {System.out.println(student.getName());});
         List<Student> studList= new ArrayList<>();
         studList= response.getStudentsList();
+
         System.out.println("Successfully captured the response");
         applyTransform(studList);
         }catch (StatusRuntimeException exception){
@@ -54,7 +55,7 @@ public class PipelineMain {
                 studentCollection
                 .apply(MapElements.via(new SimpleFunction<Student,String>() {
                     public String apply(Student stud) {
-                        return stud.getRoll()+","+stud.getFname()+","+stud.getBranch();
+                        return stud.getRoll()+","+stud.getFname()+","+stud.getBranch()+","+stud.getAddress().getPhone()+","+stud.getAddress().getStreet().getZipCode();
                     }
                 }))
                 .apply(ParDo.of(new DoFn<String, String>() {
@@ -74,9 +75,9 @@ public class PipelineMain {
                     }
                 }).withOutputTags(CSEstudents, TupleTagList.of(ETCstudents).and(MECHstudents)));
 
-            allTuples.get(CSEstudents).apply(TextIO.write().to("./src/main/output/CSEstudents").withSuffix(".csv").withoutSharding());
-            allTuples.get(ETCstudents).apply(TextIO.write().to("./src/main/output/ETCstudents").withSuffix(".csv").withoutSharding());
-            allTuples.get(MECHstudents).apply(TextIO.write().to("./src/main/output/MECHstudents").withSuffix(".csv").withoutSharding());
+            allTuples.get(CSEstudents).apply(TextIO.write().to("./src/main/output/CSEstudents").withHeader("Roll No,Name,Branch,Phone,ZipCode").withSuffix(".csv").withoutSharding());
+            allTuples.get(ETCstudents).apply(TextIO.write().to("./src/main/output/ETCstudents").withHeader("Roll No,Name,Branch,Phone,ZipCode").withSuffix(".csv").withoutSharding());
+            allTuples.get(MECHstudents).apply(TextIO.write().to("./src/main/output/MECHstudents").withHeader("Roll No,Name,Branch,Phone,ZipCode").withSuffix(".csv").withoutSharding());
             System.out.println("Task completed, please check the output folder");
             pipeline.run().waitUntilFinish();
         }catch (Exception exception){

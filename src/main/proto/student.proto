@@ -16,9 +16,20 @@ message Student{
   string lname=2;
   int32 roll=3;
   string branch=4;
-  int32 zipcode=5;
+  Address address=5;
 
 }
+message Address{
+  string houseNumber=1;
+  int64 phone=2;
+  Street street=3;
+}
+
+message Street{
+  string streetName=1;
+  int64  zipCode=2;
+}
+
 service StudentService{
   rpc getStudentList(Empty) returns (StudentObjectResponse) {};
 }

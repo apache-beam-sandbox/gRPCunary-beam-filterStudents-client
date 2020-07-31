@@ -43,7 +43,15 @@ public interface StudentOrBuilder extends
       getBranchBytes();
 
   /**
-   * <code>int32 zipcode = 5;</code>
+   * <code>.prime.Address address = 5;</code>
    */
-  int getZipcode();
+  boolean hasAddress();
+  /**
+   * <code>.prime.Address address = 5;</code>
+   */
+  com.studentReader.generated.stubs.Address getAddress();
+  /**
+   * <code>.prime.Address address = 5;</code>
+   */
+  com.studentReader.generated.stubs.AddressOrBuilder getAddressOrBuilder();
 }
